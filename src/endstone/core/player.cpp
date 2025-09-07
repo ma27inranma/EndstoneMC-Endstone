@@ -232,7 +232,7 @@ bool EndstonePlayer::handlePacket(Packet &packet)
         auto &actions = pk.player_block_actions.actions_;
         for (auto it = actions.begin(); it != actions.end();) {
             const auto &action = *it;
-            if (action.player_action_type == PlayerActionType::StartDestroyBlock) {
+            if (action.player_action_type == PlayerActionType::StartDestroyBlock || action.player_action_type == PlayerActionType::ContinueDestroyBlock) {
                 const auto item = getInventory().getItemInMainHand();
                 const auto block = getDimension().getBlockAt(action.pos.x, action.pos.y, action.pos.z);
                 PlayerInteractEvent e{
