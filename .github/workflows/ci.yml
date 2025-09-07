@@ -106,3 +106,9 @@ jobs:
 
       - name: Run Tests
         run: ctest --test-dir build/${{ matrix.build_type }}
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-${{ matrix.os }}-${{ matrix.build_type }}
+          path: build/${{ matrix.build_type }}
